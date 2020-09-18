@@ -1,1 +1,1 @@
-# Bircle: A Bottle Recycle Service
+# Bircle: The Bottle Recycle Service
