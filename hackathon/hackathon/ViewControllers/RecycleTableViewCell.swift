@@ -18,7 +18,7 @@ class RecycleTableViewCell: UITableViewCell {
     
     static let identifier = "RecycleTableViewCell"
     
-    static func nib() -> UINib{
+    static func nib() -> UINib {
         return UINib(nibName: "RecycleTableViewCell", bundle: nil)
     }
     

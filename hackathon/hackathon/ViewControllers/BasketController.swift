@@ -1,12 +1,20 @@
 import Foundation
 import UIKit
 import AAInfographics
+import RealmSwift
+
+let app = App(id: "hackzurich-uzcbl",
+configuration: AppConfiguration(baseURL: "https://realm.mongodb.com",
+                                transport: nil,
+                                localAppName: nil,
+                                localAppVersion: nil))
 
 class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // cell reuse id (cells that scroll out of view can be reused)
     let cellSpacingHeight: CGFloat = 10
     let rowHeight: CGFloat = 50
-    let feedItems = [Product(), Product()]
+    let feedItems = [Article(), Article()]
+    let cellReuseIdentifier = "cell"
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var basketCount: UILabel!
@@ -18,6 +26,8 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+
         tableView.backgroundColor = .white
         
         // Gesture Setup
@@ -33,11 +43,28 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         swipeLeft.addTarget(self, action: #selector(swipe(sender:)))
         swipeRight.addTarget(self, action: #selector(swipe(sender:)))
     
+        // Database Setup
+        let username = "test@gmail.com"
+        let password = "123456"
         
-        // Register the table view cell class and its reuse id
-        //let nib = UINib.init(nibName: "MyCustomCell", bundle: nil)
-        //self.tblUsers.register(nib, forCellReuseIdentifier: "MyCustomCell")
-        self.tableView.register(BasketTableViewCell.self, forCellReuseIdentifier: BasketTableViewCell.identifier)
+        app.login(credentials: Credentials(username: username, password: password)) { (user, error) in
+            DispatchQueue.main.sync {
+                guard error == nil else {
+                    print("Login failed: \(error!)")
+                    return
+                }
+            }
+        }
+
+        guard let user = app.currentUser() else {
+            fatalError("User must be logged.")
+        }
+        
+        let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
+        let articles = realm.objects(Article.self)
+        for article in articles {
+            print(article.name)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +117,10 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.identifier, for: indexPath) as! UITableViewCell
+        let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+        
         cell.textLabel?.text = feedItems[indexPath.row].name
+        print(feedItems[indexPath.row].name)
         cell.textLabel?.textColor = .black
         
         cell.layer.borderColor = UIColor.black.cgColor
@@ -129,7 +158,7 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
-        print(UserDefaults.standard.string(forKey: "email"))
+//        print(UserDefaults.standard.string(forKey: "email"))
         print("You tapped cell number \(indexPath.section).")
     }
 
