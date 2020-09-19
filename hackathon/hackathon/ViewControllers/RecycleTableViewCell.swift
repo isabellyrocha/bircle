@@ -34,20 +34,20 @@ class RecycleTableViewCell: UITableViewCell {
         self.colaCountLabel.text = "\(model.Cola)"
         self.beerCountLabel.text = "\(model.Beer)"
         self.waterCountLabel.text = "\(model.Water)"
-        self.dateLabel.text = "\(model.ScanDate)"
+        self.dateLabel.text = "Orders Recieved at: \(model.ScanDate)"
         handleProgressBar()
     }
     
     func handleProgressBar() {
-        recycleProgress.progress = 0.0
-        recycleProgress.layer.cornerRadius = 10
+        recycleProgress.layer.cornerRadius = 4
         recycleProgress.progressTintColor = UIColor.darkGray
         recycleProgress.clipsToBounds = true
         recycleProgress.subviews[1].clipsToBounds = true
-        self.progressBarTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+        self.progressBarTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+        
     }
     
-    @objc func updateProgressView(){
+    @objc func updateProgressView() {
         recycleProgress.progress += 0.1
         recycleProgress.setProgress(recycleProgress.progress, animated: true)
         if(recycleProgress.progress == 1.0) {
