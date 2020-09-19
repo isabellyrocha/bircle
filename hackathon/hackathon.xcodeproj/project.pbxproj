@@ -11,12 +11,10 @@
 		530EC32224FD81B10089180E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC32124FD81B10089180E /* SceneDelegate.swift */; };
 		530EC32424FD81B10089180E /* TrackingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC32324FD81B10089180E /* TrackingController.swift */; };
 		530EC32724FD81B10089180E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530EC32524FD81B10089180E /* Main.storyboard */; };
-		530EC33824FD85F60089180E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC33724FD85F60089180E /* Product.swift */; };
 		530EC34024FD896B0089180E /* Ean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC33F24FD896B0089180E /* Ean.swift */; };
 		530EC34224FD89A60089180E /* ConsumptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC34124FD89A60089180E /* ConsumptionController.swift */; };
 		530EC34624FD95E00089180E /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC34524FD95E00089180E /* Consumption.swift */; };
 		530EC34824FD963F0089180E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC34724FD963F0089180E /* User.swift */; };
-		530EC34A2503FDED0089180E /* ScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EC3492503FDED0089180E /* ScannerController.swift */; };
 		536F7E29250E8FC60046370D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F7E28250E8FC60046370D /* Wallet.swift */; };
 		536F7E2B250E9FED0046370D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F7E2A250E9FED0046370D /* ProfileController.swift */; };
 		536F7E2D250E9FF80046370D /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F7E2C250E9FF80046370D /* WalletController.swift */; };
@@ -29,7 +27,6 @@
 		53A265A5250E69D1006B873D /* Date+CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A265A4250E69D1006B873D /* Date+CurrentDate.swift */; };
 		53DDC4C925156FA200AE7797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC4C825156FA200AE7797 /* Assets.xcassets */; };
 		53FD2888250815F90052BF86 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FD2887250815F90052BF86 /* Feed.swift */; };
-		C57068B8251572D5005BBA77 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57068B7251572D5005BBA77 /* BasketTableViewCell.swift */; };
 		C5C1D74C2515456E00ED6693 /* BasketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1D74B2515456E00ED6693 /* BasketController.swift */; };
 		E0874C998C0801958E82B8D8 /* Pods_hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44379F37A820F99E1AD584E3 /* Pods_hackathon.framework */; };
 /* End PBXBuildFile section */
@@ -43,12 +40,10 @@
 		530EC32324FD81B10089180E /* TrackingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingController.swift; sourceTree = "<group>"; };
 		530EC32624FD81B10089180E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		530EC32D24FD81B40089180E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		530EC33724FD85F60089180E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		530EC33F24FD896B0089180E /* Ean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ean.swift; sourceTree = "<group>"; };
 		530EC34124FD89A60089180E /* ConsumptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionController.swift; sourceTree = "<group>"; };
 		530EC34524FD95E00089180E /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		530EC34724FD963F0089180E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		530EC3492503FDED0089180E /* ScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerController.swift; sourceTree = "<group>"; };
 		536F7E28250E8FC60046370D /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		536F7E2A250E9FED0046370D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		536F7E2C250E9FF80046370D /* WalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
@@ -61,7 +56,6 @@
 		53A265A4250E69D1006B873D /* Date+CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CurrentDate.swift"; sourceTree = "<group>"; };
 		53DDC4C825156FA200AE7797 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53FD2887250815F90052BF86 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
-		C57068B7251572D5005BBA77 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		C5C1D74B2515456E00ED6693 /* BasketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketController.swift; sourceTree = "<group>"; };
 		D44EC1F0FC8E19222F2A7922 /* Pods-hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon.release.xcconfig"; path = "Target Support Files/Pods-hackathon/Pods-hackathon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +118,6 @@
 		530EC33324FD85A10089180E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				530EC33F24FD896B0089180E /* Ean.swift */,
 				530EC34524FD95E00089180E /* Consumption.swift */,
 			);
 			path = Network;
@@ -133,12 +126,12 @@
 		530EC33424FD85AB0089180E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				530EC33724FD85F60089180E /* Product.swift */,
 				530EC34724FD963F0089180E /* User.swift */,
 				53FD2887250815F90052BF86 /* Feed.swift */,
 				536F7E28250E8FC60046370D /* Wallet.swift */,
 				536F7E5B250FF4D50046370D /* Article.swift */,
 				536F7E732511F0580046370D /* LoginViewModel.swift */,
+				530EC33F24FD896B0089180E /* Ean.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,13 +150,11 @@
 				53A2658B25081C37006B873D /* RecycleTableViewCell.swift */,
 				530EC32324FD81B10089180E /* TrackingController.swift */,
 				530EC34124FD89A60089180E /* ConsumptionController.swift */,
-				530EC3492503FDED0089180E /* ScannerController.swift */,
 				536F7E2A250E9FED0046370D /* ProfileController.swift */,
 				536F7E2C250E9FF80046370D /* WalletController.swift */,
 				536F7E59250FE2460046370D /* BarcodeController.swift */,
 				536F7E6F2511E97F0046370D /* SignInController.swift */,
 				C5C1D74B2515456E00ED6693 /* BasketController.swift */,
-				C57068B7251572D5005BBA77 /* BasketTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -326,13 +317,10 @@
 				530EC34224FD89A60089180E /* ConsumptionController.swift in Sources */,
 				53A265A5250E69D1006B873D /* Date+CurrentDate.swift in Sources */,
 				536F7E5A250FE2460046370D /* BarcodeController.swift in Sources */,
-				530EC34A2503FDED0089180E /* ScannerController.swift in Sources */,
 				530EC32424FD81B10089180E /* TrackingController.swift in Sources */,
 				536F7E2B250E9FED0046370D /* ProfileController.swift in Sources */,
 				530EC34624FD95E00089180E /* Consumption.swift in Sources */,
 				530EC34824FD963F0089180E /* User.swift in Sources */,
-				C57068B8251572D5005BBA77 /* BasketTableViewCell.swift in Sources */,
-				530EC33824FD85F60089180E /* Product.swift in Sources */,
 				530EC32024FD81B10089180E /* AppDelegate.swift in Sources */,
 				536F7E5C250FF4D50046370D /* Article.swift in Sources */,
 				530EC32224FD81B10089180E /* SceneDelegate.swift in Sources */,
