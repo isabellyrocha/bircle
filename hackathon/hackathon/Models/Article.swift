@@ -9,7 +9,8 @@ class Article: Object {
     @objc dynamic var date: String? = nil
     @objc dynamic var categoryId: String = ""
     @objc dynamic var categoryName: String = ""
-    
+    @objc dynamic var count: String? = nil
+
     convenience init(ean: String, name: String, date: String, realm_id: String, categoryId: String, categoryName: String) {
         self.init()
         self.ean = ean
@@ -18,6 +19,7 @@ class Article: Object {
         self.realm_id = realm_id
         self.categoryId = categoryId
         self.categoryName = categoryName
+        self.count = "1"
     }
     
     override static func primaryKey() -> String? {

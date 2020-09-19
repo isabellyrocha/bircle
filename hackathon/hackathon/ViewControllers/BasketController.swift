@@ -148,6 +148,7 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let label = UILabel()
         
         cell.addSubview(step)
+
         step.translatesAutoresizingMaskIntoConstraints = false
         step.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
         step.widthAnchor.constraint(equalToConstant: 94).isActive = true

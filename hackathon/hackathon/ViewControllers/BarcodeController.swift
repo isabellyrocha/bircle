@@ -108,9 +108,19 @@ class BarcodeController: UIViewController, BarcodeCaptureListener {
                     
                     let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
 
-                    try! realm.write {
-                        realm.add(Article(ean: result, name: products[0].name, date: "test_date", realm_id: "test", categoryId: products[0].categoryId, categoryName: products[0].categoryName))
+                    let articles = realm.objects(Article.self).filter("ean = %@", result)
+                    if let article = articles.first {
+                        try! realm.write {
+                            let newCount = Int(article.count!)!+1
+                            article.count = String(newCount)
+                        }
+                    } else {
+                        try! realm.write {
+                            realm.add(Article(ean: result, name: products[0].name, date: "test_date", realm_id: "test", categoryId: products[0].categoryId, categoryName: products[0].categoryName))
+                        }
                     }
+                    
+                    
                     }
                     
                 })
