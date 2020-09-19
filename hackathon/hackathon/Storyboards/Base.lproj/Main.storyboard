@@ -577,24 +577,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wallet" translatesAutoresizingMaskIntoConstraints="NO" id="W70-CS-Qge">
-                                <rect key="frame" x="77" y="360" width="261" height="177"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow1-pT-x68">
-                                <rect key="frame" x="151" y="621" width="139" height="30"/>
-                                <color key="backgroundColor" red="0.1008243039" green="0.4497352839" blue="0.27840617299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Refer A Friend!">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="referAFriend:" destination="UXQ-WG-I9n" eventType="touchUpInside" id="NPn-w5-8WD"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tet-2v-Quy">
                                 <rect key="frame" x="74" y="194" width="266" height="30"/>
                                 <constraints>
@@ -610,43 +592,64 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet" translatesAutoresizingMaskIntoConstraints="NO" id="W70-CS-Qge">
+                                <rect key="frame" x="114" y="373.5" width="186" height="154"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="tny-Od-uBz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow1-pT-x68">
+                                <rect key="frame" x="20" y="677.5" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.1008243039" green="0.4497352839" blue="0.27840617299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HLS-yX-yuz"/>
+                                </constraints>
+                                <state key="normal" title="Refer A Friend!">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="referAFriend:" destination="UXQ-WG-I9n" eventType="touchUpInside" id="NPn-w5-8WD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IED-gm-gkb"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="W70-CS-Qge" firstAttribute="centerY" secondItem="fcs-DI-Ezq" secondAttribute="centerY" id="0MM-7n-wOR"/>
                             <constraint firstItem="97k-Fm-3af" firstAttribute="leading" secondItem="2Kk-3N-Ngc" secondAttribute="leading" id="1FF-NC-Omf"/>
                             <constraint firstItem="ckU-UJ-Y4Z" firstAttribute="centerY" secondItem="Pns-cx-tPI" secondAttribute="centerY" id="1jZ-Iz-qbt"/>
+                            <constraint firstItem="Ow1-pT-x68" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="20" id="46r-Ph-2pm"/>
                             <constraint firstItem="Pns-cx-tPI" firstAttribute="trailing" secondItem="3LJ-Tw-Omg" secondAttribute="trailingMargin" id="6Dr-Gf-mX6"/>
                             <constraint firstItem="1eS-tI-uS9" firstAttribute="top" secondItem="ckU-UJ-Y4Z" secondAttribute="bottom" constant="74.5" id="6v7-VB-mHE"/>
-                            <constraint firstItem="fcs-DI-Ezq" firstAttribute="centerX" secondItem="Ow1-pT-x68" secondAttribute="centerX" constant="-13.5" id="7NE-GM-FVz"/>
-                            <constraint firstItem="W70-CS-Qge" firstAttribute="top" secondItem="6wM-pa-bwc" secondAttribute="bottom" constant="44" id="7YP-PZ-d02"/>
                             <constraint firstItem="ckU-UJ-Y4Z" firstAttribute="trailing" secondItem="6wM-pa-bwc" secondAttribute="trailing" id="8cw-Zv-phO"/>
-                            <constraint firstItem="fcs-DI-Ezq" firstAttribute="centerY" secondItem="W70-CS-Qge" secondAttribute="centerY" constant="2" id="B0n-Ch-5iI"/>
                             <constraint firstItem="Pns-cx-tPI" firstAttribute="top" secondItem="IED-gm-gkb" secondAttribute="top" constant="32" id="CcZ-OL-Vb5"/>
                             <constraint firstItem="ckU-UJ-Y4Z" firstAttribute="leading" secondItem="1eS-tI-uS9" secondAttribute="leading" id="EbY-oL-iQ6"/>
                             <constraint firstItem="ckU-UJ-Y4Z" firstAttribute="top" secondItem="IED-gm-gkb" secondAttribute="top" constant="20" id="FEV-tx-QzY"/>
                             <constraint firstItem="1eS-tI-uS9" firstAttribute="baseline" secondItem="97k-Fm-3af" secondAttribute="firstBaseline" id="Gvv-9T-SFA"/>
+                            <constraint firstItem="Ow1-pT-x68" firstAttribute="top" secondItem="W70-CS-Qge" secondAttribute="bottom" constant="150" id="I95-Oc-FRy"/>
                             <constraint firstItem="fcs-DI-Ezq" firstAttribute="bottom" secondItem="IED-gm-gkb" secondAttribute="bottom" id="LRT-EI-4mR"/>
-                            <constraint firstItem="Tet-2v-Quy" firstAttribute="trailing" secondItem="W70-CS-Qge" secondAttribute="trailing" constant="2" id="M1V-M2-jil"/>
                             <constraint firstItem="fcs-DI-Ezq" firstAttribute="leading" secondItem="3LJ-Tw-Omg" secondAttribute="leading" id="QVe-Vy-00A"/>
                             <constraint firstItem="fcs-DI-Ezq" firstAttribute="top" secondItem="IED-gm-gkb" secondAttribute="top" id="RBc-sB-Qzp"/>
                             <constraint firstItem="Tet-2v-Quy" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="74" id="Vck-YG-HpW"/>
-                            <constraint firstItem="W70-CS-Qge" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="77" id="Vl9-re-ve3"/>
                             <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="97k-Fm-3af" secondAttribute="trailing" constant="19" id="WMG-bc-lES"/>
                             <constraint firstItem="6wM-pa-bwc" firstAttribute="top" secondItem="1eS-tI-uS9" secondAttribute="bottom" constant="19" id="Wa7-UJ-DQX"/>
                             <constraint firstItem="Tet-2v-Quy" firstAttribute="top" secondItem="IED-gm-gkb" secondAttribute="top" constant="106" id="XD5-m2-Ctz"/>
                             <constraint firstItem="1eS-tI-uS9" firstAttribute="leading" secondItem="6wM-pa-bwc" secondAttribute="leading" id="YI1-rH-FBe"/>
                             <constraint firstItem="ckU-UJ-Y4Z" firstAttribute="leading" secondItem="3LJ-Tw-Omg" secondAttribute="leadingMargin" id="ZNQ-CV-h5n"/>
                             <constraint firstItem="Tet-2v-Quy" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="74" id="fzN-ox-CaY"/>
+                            <constraint firstItem="W70-CS-Qge" firstAttribute="centerX" secondItem="Tet-2v-Quy" secondAttribute="centerX" id="h6J-jj-t5I"/>
                             <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="Tet-2v-Quy" secondAttribute="trailing" constant="20" id="hdT-2T-3q9"/>
                             <constraint firstItem="97k-Fm-3af" firstAttribute="top" secondItem="Tet-2v-Quy" secondAttribute="bottom" constant="37" id="hiy-pJ-8uu"/>
+                            <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="Ow1-pT-x68" secondAttribute="trailing" constant="20" id="hqm-da-d31"/>
                             <constraint firstItem="6wM-pa-bwc" firstAttribute="baseline" secondItem="2Kk-3N-Ngc" secondAttribute="baseline" id="jFN-El-scr"/>
-                            <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="Ow1-pT-x68" secondAttribute="trailing" constant="124" id="kUB-Lv-maK"/>
                             <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="2Kk-3N-Ngc" secondAttribute="trailing" constant="6" id="lF3-pc-oAs"/>
+                            <constraint firstItem="W70-CS-Qge" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="114" id="meK-pS-Les"/>
                             <constraint firstItem="Tet-2v-Quy" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="20" id="oNR-tc-mL7"/>
-                            <constraint firstItem="IED-gm-gkb" firstAttribute="bottom" secondItem="Ow1-pT-x68" secondAttribute="bottom" constant="162" id="ow7-8u-5Nc"/>
-                            <constraint firstItem="Ow1-pT-x68" firstAttribute="leading" secondItem="IED-gm-gkb" secondAttribute="leading" constant="20" id="rSK-Eg-Xac"/>
-                            <constraint firstItem="IED-gm-gkb" firstAttribute="trailing" secondItem="Ow1-pT-x68" secondAttribute="trailing" constant="20" id="tFK-eO-acu"/>
                             <constraint firstItem="6wM-pa-bwc" firstAttribute="firstBaseline" secondItem="2Kk-3N-Ngc" secondAttribute="firstBaseline" id="tsi-DM-bvy"/>
                             <constraint firstItem="97k-Fm-3af" firstAttribute="baseline" secondItem="1eS-tI-uS9" secondAttribute="firstBaseline" id="uUU-ah-rnN"/>
                             <constraint firstAttribute="trailing" secondItem="fcs-DI-Ezq" secondAttribute="trailing" id="x06-el-uNR"/>
