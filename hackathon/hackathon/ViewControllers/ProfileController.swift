@@ -4,6 +4,9 @@ import UIKit
 class ProfileController: UIViewController {
     
     @IBOutlet var logOutButton: UIButton!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var email: UILabel!
+    @IBOutlet var address: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
