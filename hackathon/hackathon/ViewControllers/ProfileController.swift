@@ -11,6 +11,8 @@ class ProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        name.text = "Isabelly Rocha"
+        email.text = "isabellylr@gmail.com"
     }
     
     @IBAction func logout(_ sender: Any) {
