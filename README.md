@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/isabellyrocha/pipetune/blob/master/docs/slogan.png"/></p>
+<p align="center"><img src="https://github.com/isabellyrocha/bircle/blob/master/docs/slogan.png"/></p>
 
 
 # Bircle: The Bottle Recycle Service
