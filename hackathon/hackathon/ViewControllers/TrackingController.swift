@@ -2,12 +2,6 @@ import UIKit
 import AAInfographics
 import RealmSwift
 
-let app = App(id: "hackzurich-uzcbl",
-              configuration: AppConfiguration(baseURL: "https://realm.mongodb.com",
-                                              transport: nil,
-                                              localAppName: nil,
-                                              localAppVersion: nil))
-
 class TrackingController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // cell reuse id (cells that scroll out of view can be reused)
     let cellSpacingHeight: CGFloat = 10
@@ -24,27 +18,10 @@ class TrackingController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Database Setup
-        let username = "test@gmail.com"
-        let password = "123456"
-        
-        app.login(credentials: Credentials(username: username, password: password)) { (user, error) in
-            DispatchQueue.main.sync {
-                guard error == nil else {
-                    print("Login failed: \(error!)")
-                    return
-                }
-            }
-        }
-
-        guard let user = app.currentUser() else {
-            fatalError("User must be logged.")
-        }
-        let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
-        let articles = realm.objects(Article.self)
-        for article in articles {
-            print(article.name)
-        }
+        //let articles = realm.objects(Article.self)
+        //for article in articles {
+        //    print(article.name)
+        //}
     }
     
     // MARK: - Table View delegate methods
