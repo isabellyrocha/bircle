@@ -7,12 +7,6 @@ class RecycleTableViewCell: UITableViewCell {
     @IBOutlet var recycleProgress: UIProgressView!
     
     @IBOutlet var waterCountLabel: UILabel!
-    @IBOutlet var beerCountLabel: UILabel!
-    @IBOutlet var colaCountLabel: UILabel!
-    
-    @IBOutlet var waterView: UIImageView!
-    @IBOutlet var beerView: UIImageView!
-    @IBOutlet var colaView: UIImageView!
     
     var progressBarTimer: Timer!
     
@@ -31,8 +25,6 @@ class RecycleTableViewCell: UITableViewCell {
     }
     
     func configure(with model: FeedItem){
-        self.colaCountLabel.text = "\(model.Cola)"
-        self.beerCountLabel.text = "\(model.Beer)"
         self.waterCountLabel.text = "\(model.Water)"
         self.dateLabel.text = "Orders Recieved at: \(model.ScanDate)"
         handleProgressBar()

@@ -1,23 +1,17 @@
 import Foundation
 
 struct Consumption: Codable {
-    var UserId: String
-    var Waters: [Int]
-    var Beers: [Int]
-    var Colas: [Int]
+    var userId: String
+    var recycledArticles: [Int]
     
-    init(id: String, waters: [Int], beers: [Int], colas: [Int]) {
-        self.UserId   = id
-        self.Waters = waters
-        self.Beers  = beers
-        self.Colas = colas
+    init(id: String, recycledArticles: [Int]) {
+        self.userId   = id
+        self.recycledArticles = recycledArticles
     }
     
     init() {
-        self.UserId = UUID().uuidString
-        self.Waters = [10, 10, 3, 11, 7, 6, 5, 8, 10, 0, 3, 23]
-        self.Beers  = [1, 0, 13, 1, 17, 16, 0, 3, 0, 0, 1, 20]
-        self.Colas = [1, 1, 3, 10, 1, 1, 1, 1, 0, 0, 30, 11]
+        self.userId = UUID().uuidString
+        self.recycledArticles = [10, 10, 3, 11, 7, 6, 5, 8, 10, 0, 3, 23]
     }
 }
 

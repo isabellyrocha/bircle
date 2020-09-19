@@ -25,15 +25,15 @@ struct Wallet: Codable {
     }
     
     mutating func evaluate() {
-        for count in self.consumption.Beers {
+        for count in self.consumption.recycledArticles {
             self.values[beerKey] = count * beerValue
         }
         
-        for count in self.consumption.Waters {
+        for count in self.consumption.recycledArticles {
             self.values[waterKey] = count * waterValue
         }
         
-        for count in self.consumption.Colas {
+        for count in self.consumption.recycledArticles {
             self.values[colaKey] = count * colaValue
         }
     }

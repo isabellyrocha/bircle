@@ -5,7 +5,7 @@ import RealmSwift
 class TrackingController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // cell reuse id (cells that scroll out of view can be reused)
     let cellSpacingHeight: CGFloat = 10
-    let rowHeight: CGFloat = 300
+    let rowHeight: CGFloat = 180
     let feedItems = [FeedItem(), FeedItem(), FeedItem(), FeedItem(), FeedItem()]
     
     @IBOutlet var tableView: UITableView!
@@ -17,11 +17,6 @@ class TrackingController: UIViewController, UITableViewDelegate, UITableViewData
         // List View Setup
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //let articles = realm.objects(Article.self)
-        //for article in articles {
-        //    print(article.name)
-        //}
     }
     
     // MARK: - Table View delegate methods

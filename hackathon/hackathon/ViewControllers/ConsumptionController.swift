@@ -4,10 +4,8 @@ import AAInfographics
 
 class ConsumptionController: UIViewController {
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    let theme = ["#40a8c4","#ffc93c", "#dddddd"]
-    let water = "Water"
-    let beer = "Beer"
-    let cola = "Cola"
+    let theme = ["#438A5E"]
+    let bottles = "Bottles"
 
     private var userId: [String]?
     private var consumption: Consumption?
@@ -20,8 +18,8 @@ class ConsumptionController: UIViewController {
         aaChartView.frame = self.view.bounds
         self.view.addSubview(aaChartView)
 
-        var consumptionChart = initChart(chartType: AAChartType.column,
-                                         title: "Consumption Overview",
+        var consumptionChart = initChart(chartType: AAChartType.spline,
+                                         title: "Recycle Overview",
                                          subtitle: "bottles",
                                          tooltip: "count",
                                          categories: months,
@@ -50,19 +48,11 @@ class ConsumptionController: UIViewController {
     }
 
     func populateChart(consumption: Consumption, consumptionChart: AAChartModel) -> AAChartModel {
-        let waterConsumption = AASeriesElement()
-            .name(water)
-            .data(consumption.Waters)
-
-        let beerConsumption = AASeriesElement()
-            .name(beer)
-            .data(consumption.Beers)
-
-        let colaConsumption = AASeriesElement()
-            .name(cola)
-            .data(consumption.Colas)
-
-        return consumptionChart.series([waterConsumption, beerConsumption, colaConsumption])
+        let recycledArticles = AASeriesElement()
+            .name(bottles)
+            .data(consumption.recycledArticles)
+        
+        return consumptionChart.series([recycledArticles])
     }
     
 }
