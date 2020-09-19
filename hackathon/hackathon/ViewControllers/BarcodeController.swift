@@ -17,7 +17,8 @@ class BarcodeController: UIViewController, BarcodeCaptureListener {
     private var barcodeCapture: BarcodeCapture!
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
-    
+    private var products: [Product]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
@@ -92,12 +93,22 @@ class BarcodeController: UIViewController, BarcodeCaptureListener {
             //}
             //Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 1, migrationBlock: migrationBlock)
 
-            let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
+            
+            GetProductByEAN(ean: result, completionHandler:{ [weak self] (products) in
+                self?.products = products
+                DispatchQueue.main.async {
+                    // Database Setup
+                    
+                    print(products[0].name)
+                    let realm = try! Realm(configuration: user.configuration(partitionValue: ""))
 
-            try! realm.write{
-                realm.add(Article(ean: result, name: "test_name", date: "test_date", realm_id: "test"))
+                    try! realm.write{
+                        realm.add(Article(ean: result, name: products[0].name, date: "test_date", realm_id: ""))
+                    }
+                    }
+                    
+                })
             }
-        }
     }
     
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,

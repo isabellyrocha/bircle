@@ -1,6 +1,13 @@
 import Foundation
 import UIKit
 import AAInfographics
+import RealmSwift
+
+let app = App(id: "hackzurich-uzcbl",
+configuration: AppConfiguration(baseURL: "https://realm.mongodb.com",
+                                transport: nil,
+                                localAppName: nil,
+                                localAppVersion: nil))
 
 class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // cell reuse id (cells that scroll out of view can be reused)
@@ -38,6 +45,24 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         //let nib = UINib.init(nibName: "MyCustomCell", bundle: nil)
         //self.tblUsers.register(nib, forCellReuseIdentifier: "MyCustomCell")
         self.tableView.register(BasketTableViewCell.self, forCellReuseIdentifier: BasketTableViewCell.identifier)
+        
+        // Database Setup
+        let username = "test@gmail.com"
+        let password = "123456"
+        
+        app.login(credentials: Credentials(username: username, password: password)) { (user, error) in
+            DispatchQueue.main.sync {
+                guard error == nil else {
+                    print("Login failed: \(error!)")
+                    return
+                }
+            }
+        }
+
+        guard let user = app.currentUser() else {
+            fatalError("User must be logged.")
+        }
+        let realm = try! Realm(configuration: user.configuration(partitionValue: ""))
     }
     
     override func viewWillAppear(_ animated: Bool) {
