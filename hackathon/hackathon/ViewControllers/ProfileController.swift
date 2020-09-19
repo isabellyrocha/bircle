@@ -10,6 +10,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
     
     @IBAction func logout(_ sender: Any) {

@@ -476,13 +476,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D24WR7P58M;
+				DEVELOPMENT_TEAM = DYSF45V2WJ;
 				INFOPLIST_FILE = hackathon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.mvp.bircle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.bircle;
 				PRODUCT_NAME = Bircle;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,13 +495,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D24WR7P58M;
+				DEVELOPMENT_TEAM = DYSF45V2WJ;
 				INFOPLIST_FILE = hackathon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.mvp.bircle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.bircle;
 				PRODUCT_NAME = Bircle;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
