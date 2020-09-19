@@ -89,15 +89,6 @@ class BarcodeController: UIViewController, BarcodeCaptureListener {
             guard let user = app.currentUser() else {
                 fatalError("User must be logged.")
             }
-
-            // Block bellow needed if the remote scheme changes
-            //let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
-            //Leave the block empty
-            //}
-            //Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 1, migrationBlock: migrationBlock)
-
-            // GetProductByEAN(ean: result, completionHandler: <#T##([Article]) -> Void#>)
-
             
             self.getProductByEAN(ean: result, completionHandler:{ [weak self] (products) in
                 self?.products = products
@@ -108,9 +99,19 @@ class BarcodeController: UIViewController, BarcodeCaptureListener {
                     
                     let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
 
-                    try! realm.write {
-                        realm.add(Article(ean: result, name: products[0].name, date: "test_date", realm_id: "test", categoryId: products[0].categoryId, categoryName: products[0].categoryName))
+                    let articles = realm.objects(Article.self).filter("ean = %@ AND status = 'unsent'", result)
+                    if let article = articles.first {
+                        try! realm.write {
+                            let newCount = Int(article.count!)!+1
+                            article.count = String(newCount)
+                        }
+                    } else {
+                        try! realm.write {
+                            realm.add(Article(ean: result, name: products[0].name, date: "test_date", realm_id: "test", categoryId: products[0].categoryId))
+                        }
                     }
+                    
+                    
                     }
                     
                 })

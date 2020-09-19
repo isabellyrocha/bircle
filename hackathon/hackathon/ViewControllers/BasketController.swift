@@ -4,10 +4,10 @@ import AAInfographics
 import RealmSwift
 
 let app = App(id: "hackzurich-uzcbl",
-configuration: AppConfiguration(baseURL: "https://realm.mongodb.com",
-                                transport: nil,
-                                localAppName: nil,
-                                localAppVersion: nil))
+              configuration: AppConfiguration(baseURL: "https://realm.mongodb.com",
+                                              transport: nil,
+                                              localAppName: nil,
+                                              localAppVersion: nil))
 
 class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // cell reuse id (cells that scroll out of view can be reused)
@@ -27,8 +27,10 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.dataSource = self
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-
+        self.tableView.allowsSelection = false
+        
         tableView.backgroundColor = .white
+        self.tableView.separatorStyle = .none
         
         // Gesture Setup
         let swipeLeft = UISwipeGestureRecognizer()
@@ -42,7 +44,7 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         swipeLeft.addTarget(self, action: #selector(swipe(sender:)))
         swipeRight.addTarget(self, action: #selector(swipe(sender:)))
-    
+        
         // Database Setup
         let username = "test@gmail.com"
         let password = "123456"
@@ -55,17 +57,19 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
         }
-
-        guard let user = app.currentUser() else {
-            fatalError("User must be logged.")
-        }
         
-        let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
+        //guard let user = app.currentUser() else {
+        //    fatalError("User must be logged.")
+        //}
+        
+        //let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
         //let articles = realm.objects(Article.self)
-        self.feedItems = Array(realm.objects(Article.self))
+        //self.feedItems = Array(realm.objects(Article.self))
         //for article in articles {
         //    print(article.name)
         //}
+        
+        updateArticles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,15 +98,23 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func updateArticles() {
-        DispatchQueue.main.async{
-            self.basketCount.text =  String(self.feedItems.count)
-        }
         guard let user = app.currentUser() else {
             fatalError("User must be logged.")
         }
         let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
-        self.feedItems = Array(realm.objects(Article.self))
-        self.tableView.reloadData()
+        let articles = realm.objects(Article.self).filter("status = 'unsent'")
+        self.feedItems = Array(articles)
+        var count = 0
+        for article in articles {
+            count = count + Int(article.count!)!
+        }
+        DispatchQueue.main.async{
+            self.basketCount.text =  String(count)
+        }
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
+        
     }
     
     // There is just one row in every section
@@ -133,9 +145,9 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
         
-        cell.textLabel?.text = feedItems[indexPath.section].name
-        print(indexPath.section)
-        print(feedItems[indexPath.row].name)
+        let article = feedItems[indexPath.section]
+        
+        cell.textLabel?.text = article.name
         cell.textLabel?.textColor = .black
         
         cell.layer.borderColor = UIColor.black.cgColor
@@ -153,9 +165,10 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         step.widthAnchor.constraint(equalToConstant: 94).isActive = true
         step.heightAnchor.constraint(equalToConstant: 29).isActive = true
         step.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -30).isActive = true
-
+        step.addTarget(self, action: #selector(self.stepperValueChanged(_:)), for: UIControl.Event.valueChanged)
+        
         cell.addSubview(label)
-        label.text = "0"
+        label.text = article.count!
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
         label.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -166,16 +179,61 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
-    func labelValueChanged(sender:UIStepper!, indexPath: IndexPath, label: UILabel) {
-        label.text = feedItems[indexPath.row].name
+    @objc func stepperValueChanged(_ stepper: UIStepper) {
+        let stepperValue = Int(stepper.value)
+        //print(stepperValue) // prints value
+        
+        let indexPath = IndexPath(row: 0, section: stepperValue)
+        print(indexPath.section)
+        //if let cell = yourTableView.cellForRow(at: indexPath) as? CartListingItemTableViewCell {
+        //    cell.label.text = String(stepperValue)
+        //    yourValueArray[index] = stepperValue
+        
+        
+        //}
+        
+    }
+    @IBAction func reBottleAction(_ sender:UITapGestureRecognizer){
+        let referAlert = UIAlertController(title: "Pick Up Notice", message: "Your driver is on their way to pick your re-cycle bag!", preferredStyle: UIAlertController.Style.alert)
+        
+        
+        
+        referAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        referAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+            
+            self.updateArticles()
+        }))
+        
+        self.present(referAlert, animated: true, completion: nil)
+        
+        let alert = UIAlertController(title: "Pick Up Notice", message: nil, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        // do other task
+        guard let user = app.currentUser() else {
+            fatalError("User must be logged.")
+        }
+        let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
+        
+        let articles = realm.objects(Article.self).filter("status = 'unsent'")
+        for article in articles {
+            try! realm.write {
+                article.status = "sent"
+                article.date = Date.getCurrentDate()
+            }
+        }
+        
     }
     
     // method to run when table view cell is tapped
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // note that indexPath.section is used rather than indexPath.row
-//        print(UserDefaults.standard.string(forKey: "email"))
-        print("You tapped cell number \(indexPath.section).")
-    }
+    //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // note that indexPath.section is used rather than indexPath.row
+    //        print(UserDefaults.standard.string(forKey: "email"))
+    //   print("You tapped cell number \(indexPath.section).")
+    //}
 }
 
 extension UINavigationController {
