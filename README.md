@@ -1,3 +1,6 @@
+<p align="center"><img src="https://github.com/isabellyrocha/pipetune/blob/master/docs/slogan.png"/></p>
+
+
 # Bircle: The Bottle Recycle Service
 
 We are developing Bircle, a bottle recycling service which gives every individual the opportunity to contribute building green cities. Bircle takes from the end users the pain of recycling and streamlines the collected waste to material aggregators. 
