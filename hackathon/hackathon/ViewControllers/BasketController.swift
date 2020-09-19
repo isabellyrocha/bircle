@@ -13,7 +13,7 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // cell reuse id (cells that scroll out of view can be reused)
     let cellSpacingHeight: CGFloat = 10
     let rowHeight: CGFloat = 50
-    let feedItems = [Article(), Article()]
+    var feedItems = [Article(), Article()]
     let cellReuseIdentifier = "cell"
     
     @IBOutlet var tableView: UITableView!
@@ -61,14 +61,16 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
-        let articles = realm.objects(Article.self)
-        for article in articles {
-            print(article.name)
-        }
+        //let articles = realm.objects(Article.self)
+        self.feedItems = Array(realm.objects(Article.self))
+        //for article in articles {
+        //    print(article.name)
+        //}
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Basket"
+        updateArticles()
     }
     
     @objc func swipe(sender: UISwipeGestureRecognizer){
@@ -89,6 +91,18 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.feedItems.count
+    }
+    
+    func updateArticles() {
+        DispatchQueue.main.async{
+            self.basketCount.text =  String(self.feedItems.count)
+        }
+        guard let user = app.currentUser() else {
+            fatalError("User must be logged.")
+        }
+        let realm = try! Realm(configuration: user.configuration(partitionValue: "test"))
+        self.feedItems = Array(realm.objects(Article.self))
+        self.tableView.reloadData()
     }
     
     // There is just one row in every section
@@ -119,7 +133,8 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
         
-        cell.textLabel?.text = feedItems[indexPath.row].name
+        cell.textLabel?.text = feedItems[indexPath.section].name
+        print(indexPath.section)
         print(feedItems[indexPath.row].name)
         cell.textLabel?.textColor = .black
         
@@ -161,7 +176,6 @@ class BasketController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //        print(UserDefaults.standard.string(forKey: "email"))
         print("You tapped cell number \(indexPath.section).")
     }
-
 }
 
 extension UINavigationController {
