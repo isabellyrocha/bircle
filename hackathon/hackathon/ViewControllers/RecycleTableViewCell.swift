@@ -4,11 +4,7 @@ class RecycleTableViewCell: UITableViewCell {
     
     @IBOutlet var recycleBatchImageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var recycleRequest: UIButton!
-    
-    @IBOutlet var beerStepper: UIStepper!
-    @IBOutlet var waterStepper: UIStepper!
-    @IBOutlet var colaStepper: UIStepper!
+    @IBOutlet var recycleProgress: UIProgressView!
     
     @IBOutlet var waterCountLabel: UILabel!
     @IBOutlet var beerCountLabel: UILabel!
@@ -17,6 +13,8 @@ class RecycleTableViewCell: UITableViewCell {
     @IBOutlet var waterView: UIImageView!
     @IBOutlet var beerView: UIImageView!
     @IBOutlet var colaView: UIImageView!
+    
+    var progressBarTimer: Timer!
     
     static let identifier = "RecycleTableViewCell"
     
@@ -36,7 +34,25 @@ class RecycleTableViewCell: UITableViewCell {
         self.colaCountLabel.text = "\(model.Cola)"
         self.beerCountLabel.text = "\(model.Beer)"
         self.waterCountLabel.text = "\(model.Water)"
-        self.dateLabel.text = "\(model.ScanDate)"
+        self.dateLabel.text = "Orders Recieved at: \(model.ScanDate)"
+        handleProgressBar()
+    }
+    
+    func handleProgressBar() {
+        recycleProgress.layer.cornerRadius = 4
+        recycleProgress.progressTintColor = UIColor.darkGray
+        recycleProgress.clipsToBounds = true
+        recycleProgress.subviews[1].clipsToBounds = true
+        self.progressBarTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func updateProgressView() {
+        recycleProgress.progress += 0.1
+        recycleProgress.setProgress(recycleProgress.progress, animated: true)
+        if(recycleProgress.progress == 1.0) {
+            progressBarTimer.invalidate()
+        }
     }
     
 }
