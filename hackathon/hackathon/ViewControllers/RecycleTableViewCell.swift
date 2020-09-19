@@ -24,18 +24,19 @@ class RecycleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(with model: FeedItem){
-        self.waterCountLabel.text = "\(model.Water)"
-        self.dateLabel.text = "Orders Recieved at: \(model.ScanDate)"
+    func configure(with model: Article){
+        self.waterCountLabel.text = "\(String(describing: model.count!))"
+        self.dateLabel.text = "Orders Recieved at: \(String(describing: model.date!))"
         handleProgressBar()
     }
     
     func handleProgressBar() {
+        recycleProgress.progress = 0.25
         recycleProgress.layer.cornerRadius = 4
         recycleProgress.progressTintColor = UIColor.darkGray
         recycleProgress.clipsToBounds = true
         recycleProgress.subviews[1].clipsToBounds = true
-        self.progressBarTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+        self.progressBarTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
         
     }
     

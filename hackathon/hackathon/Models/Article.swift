@@ -22,6 +22,12 @@ class Article: Object {
         self.count = "1"
     }
     
+    convenience init(date: String, count: String) {
+        self.init()
+        self.date = date
+        self.count = count
+    }
+    
     override static func primaryKey() -> String? {
         return "_id"
     }

@@ -15,6 +15,10 @@ class ProfileController: UIViewController {
         email.text = "isabellylr@gmail.com"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Profile"
+    }
+    
     @IBAction func logout(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")

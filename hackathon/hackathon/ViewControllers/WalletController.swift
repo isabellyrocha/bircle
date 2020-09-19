@@ -17,6 +17,10 @@ class WalletController: UIViewController {
         refer.layer.cornerRadius = 8
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Wallet"
+    }
+    
     @IBAction func referAFriend(_ sender: Any) {
         let referAlert = UIAlertController(title: "Referral Bonus", message: "Let your friends know about Bircle! Use #hackzurich", preferredStyle: UIAlertController.Style.alert)
 
