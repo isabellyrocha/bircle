@@ -12,7 +12,7 @@ First, we observe an increasing need for sustainable construction material such 
 
 ## What it does
 
-<p align="center"><img src="https://github.com/isabellyrocha/bircle/blob/master/docs/bircle_flow.jpg" width="250" height="400"/></p>
+<p align="center"><img src="https://github.com/isabellyrocha/bircle/blob/master/docs/bircle_flow.jpg"/></p>
 
 Bircle makes it easier for users to recycle their bottles. We make a bridge between recycling facilities and the consumer, increasing recycling rates and making the user’s life easier. The user can easily enter the bottles to be recycled by scanning their barcode. Once the user has collected enough bottles they can request the pickup service and that’s it! The pickup service is activated, which means the bottles will be picked up at the user’s place and dropped off at the nearest recycling facility.
 
